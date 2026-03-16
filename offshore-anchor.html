@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Offshore Anchor | Ground Engineering Toolbox</title>
+  <title>Geothermal | Ground Engineering Toolbox</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <h1>Offshore Anchor Module</h1>
+      <h1>Geothermal Module</h1>
       <p class="subtitle">Prototype calculator</p>
     </div>
   </header>
@@ -24,31 +24,31 @@
       <p>Enter x and y, then calculate x × y.</p>
 
       <div class="form-group">
-        <label for="x">x</label>
-        <input type="number" id="x" step="any" placeholder="Enter x" />
+        <label for="geo-x">x</label>
+        <input type="number" id="geo-x" step="any" placeholder="Enter x" />
       </div>
 
       <div class="form-group">
-        <label for="y">y</label>
-        <input type="number" id="y" step="any" placeholder="Enter y" />
+        <label for="geo-y">y</label>
+        <input type="number" id="geo-y" step="any" placeholder="Enter y" />
       </div>
 
       <div class="button-row">
-        <button class="button" onclick="calculateProduct()">Calculate</button>
+        <button class="button" onclick="calculateGeoProduct()">Calculate</button>
       </div>
 
       <div class="result-box">
         <strong>Result:</strong>
-        <span id="result">-</span>
+        <span id="geo-result">-</span>
       </div>
     </section>
   </main>
 
   <script>
-    function calculateProduct() {
-      const x = parseFloat(document.getElementById("x").value);
-      const y = parseFloat(document.getElementById("y").value);
-      const resultEl = document.getElementById("result");
+    function calculateGeoProduct() {
+      const x = parseFloat(document.getElementById("geo-x").value);
+      const y = parseFloat(document.getElementById("geo-y").value);
+      const resultEl = document.getElementById("geo-result");
 
       if (isNaN(x) || isNaN(y)) {
         resultEl.textContent = "Please enter valid numbers.";
