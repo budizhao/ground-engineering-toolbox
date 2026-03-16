@@ -10,7 +10,7 @@
   <header class="site-header">
     <div class="container">
       <h1>Geothermal Module</h1>
-      <p class="subtitle">Prototype tool page</p>
+      <p class="subtitle">Prototype calculator</p>
     </div>
   </header>
 
@@ -20,8 +20,8 @@
     </nav>
 
     <section class="card">
-      <h2>Demo Calculator</h2>
-      <p>Enter x and y, then calculate the product x × y.</p>
+      <h2>Simple Product Calculator</h2>
+      <p>Enter x and y, then calculate x × y.</p>
 
       <div class="form-group">
         <label for="x">x</label>
@@ -51,7 +51,7 @@
       const resultEl = document.getElementById("result");
 
       if (isNaN(x) || isNaN(y)) {
-        resultEl.textContent = "Please enter valid numbers for both x and y.";
+        resultEl.textContent = "Please enter valid numbers.";
         return;
       }
 
