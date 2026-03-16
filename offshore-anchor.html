@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geothermal | Ground Engineering Toolbox</title>
+  <title>Offshore Anchor | Ground Engineering Toolbox</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <h1>Geothermal Module</h1>
-      <p class="subtitle">Prototype calculator</p>
+      <h1>Offshore Anchor Module</h1>
+      <p class="subtitle">Prototype p–y curve tool for offshore pile anchor in soft clay</p>
     </div>
   </header>
 
@@ -20,43 +21,97 @@
     </nav>
 
     <section class="card">
-      <h2>Simple Product Calculator</h2>
-      <p>Enter x and y, then calculate x × y.</p>
+      <h2>Offshore pile anchor p–y curve</h2>
+      <p>
+        Screening-level prototype for static lateral response in soft clay.
+        This version generates a p–y curve at a selected depth and a simple integrated ultimate resistance estimate.
+      </p>
 
-      <div class="form-group">
-        <label for="geo-x">x</label>
-        <input type="number" id="geo-x" step="any" placeholder="Enter x" />
-      </div>
+      <div class="grid-2">
+        <div>
+          <h3>Geometry</h3>
 
-      <div class="form-group">
-        <label for="geo-y">y</label>
-        <input type="number" id="geo-y" step="any" placeholder="Enter y" />
-      </div>
+          <div class="form-group">
+            <label for="diameter">Pile diameter, D (m)</label>
+            <input type="number" id="diameter" step="any" value="0.8" />
+          </div>
 
-      <div class="button-row">
-        <button class="button" onclick="calculateGeoProduct()">Calculate</button>
-      </div>
+          <div class="form-group">
+            <label for="length">Embedded length, L (m)</label>
+            <input type="number" id="length" step="any" value="15" />
+          </div>
 
-      <div class="result-box">
-        <strong>Result:</strong>
-        <span id="geo-result">-</span>
+          <h3>Soil parameters</h3>
+
+          <div class="form-group">
+            <label for="su">Undrained shear strength, su (kPa)</label>
+            <input type="number" id="su" step="any" value="25" />
+          </div>
+
+          <div class="form-group">
+            <label for="gammaEff">Effective unit weight, γ' (kN/m³)</label>
+            <input type="number" id="gammaEff" step="any" value="6" />
+          </div>
+
+          <div class="form-group">
+            <label for="eps50">ε50 (-)</label>
+            <input type="number" id="eps50" step="any" value="0.02" />
+          </div>
+
+          <div class="form-group">
+            <label for="Jfactor">J factor (-)</label>
+            <input type="number" id="Jfactor" step="any" value="0.5" />
+          </div>
+        </div>
+
+        <div>
+          <h3>Curve evaluation settings</h3>
+
+          <div class="form-group">
+            <label for="depth">Depth for p–y curve, z (m)</label>
+            <input type="number" id="depth" step="any" value="5" />
+          </div>
+
+          <div class="form-group">
+            <label for="ymax">Maximum lateral displacement, ymax (m)</label>
+            <input type="number" id="ymax" step="any" value="0.10" />
+          </div>
+
+          <div class="form-group">
+            <label for="npoints">Number of curve points</label>
+            <input type="number" id="npoints" step="1" value="40" />
+          </div>
+
+          <div class="button-row">
+            <button class="button" onclick="runPYAnalysis()">Calculate</button>
+          </div>
+
+          <div class="result-box">
+            <p><strong>Selected depth pult:</strong> <span id="pultOut">-</span> kN/m</p>
+            <p><strong>Selected depth y50:</strong> <span id="y50Out">-</span> m</p>
+            <p><strong>Integrated ultimate resistance index:</strong> <span id="capacityOut">-</span> kN</p>
+            <p><strong>Method note:</strong> static soft clay screening model</p>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <section class="card">
+      <h2>p–y curve at selected depth</h2>
+      <canvas id="pyChart" height="120"></canvas>
+    </section>
+
+    <section class="card">
+      <h2>Assumptions and notes</h2>
+      <ul>
+        <li>Prototype implementation for soft clay and static loading.</li>
+        <li>Soil properties are assumed constant with depth in this version.</li>
+        <li>The integrated resistance is a screening-level indicator from pult(z) integration, not a full pile-head design solution.</li>
+        <li>This tool is for preliminary evaluation only and should not replace detailed design or code-based analysis.</li>
+      </ul>
     </section>
   </main>
 
-  <script>
-    function calculateGeoProduct() {
-      const x = parseFloat(document.getElementById("geo-x").value);
-      const y = parseFloat(document.getElementById("geo-y").value);
-      const resultEl = document.getElementById("geo-result");
-
-      if (isNaN(x) || isNaN(y)) {
-        resultEl.textContent = "Please enter valid numbers.";
-        return;
-      }
-
-      resultEl.textContent = x * y;
-    }
-  </script>
+  <script src="js/offshore-anchor.js"></script>
 </body>
 </html>

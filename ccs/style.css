@@ -89,3 +89,17 @@ body {
   padding: 14px 16px;
   border-radius: 8px;
 }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.result-box p {
+  margin: 8px 0;
+}
+
+ul {
+  padding-left: 20px;
+}
