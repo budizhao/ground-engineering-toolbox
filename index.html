@@ -7,24 +7,58 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <h1>Ground Engineering Toolbox</h1>
-    <p>Web-based tools for geothermal systems and offshore anchor engineering</p>
+  <header class="site-header">
+    <div class="container">
+      <h1>Ground Engineering Toolbox</h1>
+      <p class="subtitle">
+        Web-based engineering tools for geothermal systems and offshore anchor design
+      </p>
+    </div>
   </header>
 
-  <main>
-    <section class="cards">
-      <div class="card">
-        <h2>Geothermal</h2>
-        <p>ATES, BTES, thermal property and system screening tools.</p>
-        <a href="geothermal.html">Open Geothermal Tools</a>
-      </div>
+  <main class="container">
+    <section class="hero">
+      <h2>Engineering tools under development</h2>
+      <p>
+        This prototype platform currently includes a preliminary borehole heat exchanger
+        design tool and an offshore pile anchor p–y curve tool for screening-level analysis.
+      </p>
+    </section>
 
-      <div class="card">
-        <h2>Offshore Anchor</h2>
-        <p>Anchor capacity, load–displacement and installation effect tools.</p>
-        <a href="offshore-anchor.html">Open Offshore Anchor Tools</a>
-      </div>
+    <section class="card-grid">
+      <article class="card">
+        <h3>Geothermal</h3>
+        <p>
+          Screening-level tools for geothermal systems, including preliminary borehole heat
+          exchanger field sizing from thermal demand and ground thermal properties.
+        </p>
+        <a class="button" href="geothermal.html">Open Geothermal Module</a>
+      </article>
+
+      <article class="card">
+        <h3>Offshore Anchor</h3>
+        <p>
+          Screening-level tools for offshore pile anchor response, including p–y curve
+          generation and preliminary lateral resistance estimation in soft clay.
+        </p>
+        <a class="button" href="offshore-anchor.html">Open Offshore Anchor Module</a>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Currently available tools</h2>
+      <ul>
+        <li><strong>Geothermal:</strong> Preliminary borehole heat exchanger field sizing</li>
+        <li><strong>Offshore Anchor:</strong> Static p–y curve generation for soft clay</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Prototype note</h2>
+      <p>
+        The current tools are intended for preliminary assessment and concept screening only.
+        They do not replace detailed engineering analysis, site investigation, or code-based design.
+      </p>
     </section>
   </main>
 </body>

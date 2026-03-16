@@ -10,7 +10,7 @@
   <header class="site-header">
     <div class="container">
       <h1>Geothermal Module</h1>
-      <p class="subtitle">Prototype calculator</p>
+      <p class="subtitle">Preliminary borehole heat exchanger design tool</p>
     </div>
   </header>
 
@@ -20,43 +20,89 @@
     </nav>
 
     <section class="card">
-      <h2>Simple Product Calculator</h2>
-      <p>Enter x and y, then calculate x × y.</p>
+      <h2>Borehole Heat Exchanger (BHE) preliminary design</h2>
+      <p>
+        Screening-level tool for estimating the number of boreholes, spacing, and depth
+        for a vertical closed-loop borehole heat exchanger field.
+      </p>
 
-      <div class="form-group">
-        <label for="x">x</label>
-        <input type="number" id="x" step="any" placeholder="Enter x" />
-      </div>
+      <div class="grid-2">
+        <div>
+          <h3>Thermal demand</h3>
 
-      <div class="form-group">
-        <label for="y">y</label>
-        <input type="number" id="y" step="any" placeholder="Enter y" />
-      </div>
+          <div class="form-group">
+            <label for="heatDemand">Required heat extraction, P (kW)</label>
+            <input type="number" id="heatDemand" step="any" value="200" />
+          </div>
 
-      <div class="button-row">
-        <button class="button" onclick="calculateProduct()">Calculate</button>
-      </div>
+          <div class="form-group">
+            <label for="peakFactor">Peak design factor (-)</label>
+            <input type="number" id="peakFactor" step="any" value="1.10" />
+          </div>
 
-      <div class="result-box">
-        <strong>Result:</strong>
-        <span id="result">-</span>
+          <h3>Ground properties</h3>
+
+          <div class="form-group">
+            <label for="conductivity">Thermal conductivity, k (W/m·K)</label>
+            <input type="number" id="conductivity" step="any" value="2.5" />
+          </div>
+
+          <div class="form-group">
+            <label for="capacity">Volumetric heat capacity, Cv (MJ/m³·K)</label>
+            <input type="number" id="capacity" step="any" value="2.2" />
+          </div>
+        </div>
+
+        <div>
+          <h3>Design settings</h3>
+
+          <div class="form-group">
+            <label for="maxDepth">Maximum borehole depth, Hmax (m)</label>
+            <input type="number" id="maxDepth" step="any" value="180" />
+          </div>
+
+          <div class="form-group">
+            <label for="minSpacing">Minimum borehole spacing, Smin (m)</label>
+            <input type="number" id="minSpacing" step="any" value="6" />
+          </div>
+
+          <div class="form-group">
+            <label for="maxBoreholes">Maximum practical borehole count</label>
+            <input type="number" id="maxBoreholes" step="1" value="100" />
+          </div>
+
+          <div class="button-row">
+            <button class="button" onclick="runBHEDesign()">Generate design</button>
+          </div>
+
+          <div class="result-box">
+            <p><strong>Estimated unit extraction rate:</strong> <span id="unitRateOut">-</span> W/m</p>
+            <p><strong>Total required borehole length:</strong> <span id="totalLengthOut">-</span> m</p>
+            <p><strong>Recommended number of boreholes:</strong> <span id="nBoreholesOut">-</span></p>
+            <p><strong>Recommended borehole depth:</strong> <span id="depthOut">-</span> m</p>
+            <p><strong>Recommended spacing:</strong> <span id="spacingOut">-</span> m</p>
+            <p><strong>Approximate field footprint:</strong> <span id="footprintOut">-</span> m × <span id="footprintOut2">-</span> m</p>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <section class="card">
+      <h2>Indicative borehole field layout</h2>
+      <canvas id="bheCanvas" width="900" height="520"></canvas>
+    </section>
+
+    <section class="card">
+      <h2>Method notes</h2>
+      <ul>
+        <li>This is a screening-level preliminary design tool for vertical closed-loop BHE systems.</li>
+        <li>The tool estimates a feasible field size from thermal demand and simplified ground thermal properties.</li>
+        <li>The unit extraction rate is estimated from simplified scaling with thermal conductivity and volumetric heat capacity.</li>
+        <li>Detailed design should consider annual load profile, thermal interference, fluid temperatures, pipe configuration, groundwater effects, and site constraints.</li>
+      </ul>
     </section>
   </main>
 
-  <script>
-    function calculateProduct() {
-      const x = parseFloat(document.getElementById("x").value);
-      const y = parseFloat(document.getElementById("y").value);
-      const resultEl = document.getElementById("result");
-
-      if (isNaN(x) || isNaN(y)) {
-        resultEl.textContent = "Please enter valid numbers.";
-        return;
-      }
-
-      resultEl.textContent = x * y;
-    }
-  </script>
+  <script src="js/geothermal.js"></script>
 </body>
 </html>
