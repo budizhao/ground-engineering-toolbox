@@ -124,3 +124,14 @@ canvas {
   border-radius: 8px;
   background: white;
 }
+
+.site-footer {
+  padding: 24px 0 40px;
+  text-align: center;
+  color: #475569;
+}
+
+.site-footer a {
+  color: #2563eb;
+  text-decoration: none;
+}
