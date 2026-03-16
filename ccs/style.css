@@ -135,3 +135,25 @@ canvas {
   color: #2563eb;
   text-decoration: none;
 }
+.main-nav {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.nav-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  padding: 14px 0;
+}
+
+.main-nav a {
+  color: #1f2937;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.main-nav a:hover {
+  color: #2563eb;
+}
